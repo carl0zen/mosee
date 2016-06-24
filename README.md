@@ -1,117 +1,196 @@
-# Simple Webpack React Starter
+# React Static Boilerplate
 
-## Motivation
-I couldn't find a _simple_ webpack starter template that contained all the features I wanted.
+[![NPM version](http://img.shields.io/npm/v/generator-react-static.svg?style=flat-square)](https://www.npmjs.com/package/generator-react-static)
+[![NPM downloads](http://img.shields.io/npm/dm/generator-react-static.svg?style=flat-square)](https://www.npmjs.com/package/generator-react-static)
+[![Build Status](http://img.shields.io/travis/koistya/react-static-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/koistya/react-static-boilerplate)
+[![Dependency Status](http://img.shields.io/david/koistya/react-static-boilerplate.svg?branch=master&style=flat-square)](https://david-dm.org/koistya/react-static-boilerplate)
+[![GitHub Issues](https://img.shields.io/github/issues/koistya/react-static-boilerplate.svg?style=flat-square)](https://github.com/koistya/react-static-boilerplate/issues?q=is:open)
+[![To-do](https://img.shields.io/waffle/label/koistya/react-static-boilerplate/to-do.svg?style=flat-square)](https://waffle.io/koistya/react-static-boilerplate)
+[![In progress](https://img.shields.io/waffle/label/koistya/react-static-boilerplate/in%20progress.svg?style=flat-square)](https://waffle.io/koistya/react-static-boilerplate)
 
-I've put together this simple webpack starter example with the following features:
+> Static website starter kit powered by [React.js](http://facebook.github.io/react/) and [Webpack](http://webpack.github.io/)
 
-* Hot loading of react components
-* Proxying onto your own api server (in `server/index.js`) for api calls
-* Auto reload of api server on server file changes
-* Sourcemaps during developement
-* Sourcemaps for production builds for debugging deployed code
-* Babel for js/jsx processing
-* Imagemin for processing images
-* Font handling
-* scss/sass with autoprefixer
-* Testing
 
-## Getting started
-Clone the repository:
+### Features
 
-```sh
-git clone git@github.com:cgreening/simple-webpack-react-starter.git
-cd simple-webpack-react-starter
-npm install
-npm run dev
-Browse to http://localhost:8080
-```
-If you just want to start a new project without all the commit history then do:
+&nbsp; &nbsp; ✓ Modern JavaScript syntax ([ES2015](http://babeljs.io/docs/learn-es2015/)+) via [Babel](http://babeljs.io/)<br>
+&nbsp; &nbsp; ✓ Modern CSS syntax (CSS3+) via [PostCSS](https://github.com/postcss/postcss)<br>
+&nbsp; &nbsp; ✓ Application state management via [Redux](http://redux.js.org/)<br>
+&nbsp; &nbsp; ✓ Routing and navigation via [`path-to-regexp`](https://github.com/pillarjs/path-to-regexp) [`history`](https://github.com/mjackson/history)<br>
+&nbsp; &nbsp; ✓ Modular styles via [CSS Modules](https://github.com/css-modules/css-modules)<br>
+&nbsp; &nbsp; ✓ [Code-splitting](https://github.com/webpack/docs/wiki/code-splitting) and async chunk loading<br>
+&nbsp; &nbsp; ✓ Hot Module Replacement ([HMR](https://webpack.github.io/docs/hot-module-replacement.html)) /w [React Hot Loader](http://gaearon.github.io/react-hot-loader/)<br>
+&nbsp; &nbsp; ✓ Bundling and optimization with [Webpack](https://webpack.github.io/)<br>
+&nbsp; &nbsp; ✓ Cross-device testing with [Browsersync](https://browsersync.io/)<br>
+&nbsp; &nbsp; ✓ Easy deployment to [GitHub Pages](https://pages.github.com/), [Amazon S3](http://davidwalsh.name/hosting-website-amazon-s3) or [Firebase](https://www.firebase.com/)<br>
+&nbsp; &nbsp; ✓ [Yeoman](http://yeoman.io/) generator ([generator-react-static](https://www.npmjs.com/package/generator-react-static))<br>
+&nbsp; &nbsp; ✓ 24/7 community support on [Gitter](https://gitter.im/koistya/react-static-boilerplate) or [StackOverflow](http://stackoverflow.com/questions/tagged/react-starter-kit)<br>
+&nbsp; &nbsp; ✓ Customization requests on [Codementor](https://www.codementor.io/koistya)<br>
 
-```sh
-git clone --depth=1 git@github.com:cgreening/simple-webpack-react-starter <your-project-name>
-cd <your-project-name>
-npm install
-npm run dev
-Browse to http://localhost:8080
-```
 
-__Special note for windows users__
+### Sponsors
 
-`npm run dev` relies on being able to run two commands simultaneously, the server and the webpack dev server. This does not work on windows so you will need to open to command windows and run these commands:
+<a href="https://opencollective.com/react-static-boilerplate/sponsor/0/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/sponsor/0/avatar.svg" height="64">
+</a> &nbsp;
+<a href="https://opencollective.com/react-static-boilerplate/sponsor/1/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/sponsor/1/avatar.svg" height="64">
+</a> &nbsp;
+<a href="https://opencollective.com/react-static-boilerplate/sponsor/2/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/sponsor/2/avatar.svg" height="64">
+</a> &nbsp;
+<a href="https://opencollective.com/react-static-boilerplate/sponsor/3/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/sponsor/3/avatar.svg" height="64">
+</a> &nbsp;
+<a href="https://opencollective.com/react-static-boilerplate/sponsor/4/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/sponsor/4/avatar.svg" height="64">
+</a>
 
-```sh
-npm run dev-web
-```
 
-```sh
-npm run dev-server
-```
+### Directory Layout
 
-You can now browse to `http://localhost:8080`
-
-##Live Reload
-
-In `App` you'll find the single page reach app. Try opening `Components/Header.js' and modifying the text. Hit save and the browser should update with your changes.
-
-In `Server` you'll find a minimal express server. Currently it serves content from the build directory and has 1 api call to get the current time.
-
-Try adding a new api endpoint and modify `Components/Content.js` so that it hits your new endpoint.
-
-You should be able to make all these changes without restarting the server manually as it should auto detect the changes and restart/reload as necessary.
-
-## Running in Development Mode
-```sh
-npm run dev
-```
-This will start the webpack dev server on the defuault port (8080). It will also start the express server from `server/index.js` using nodemon.
-
-Webpack dev server will watch for changes in the files from the `App` folder and hot load any changed modules.
-
-nodemon will watch files in the `server` folder and restart the express server if any files change.
-
-This means that you can update both your single page app and your backend during development and have the changes available immediately.
-
-## Building for Production
-```sh
-npm run build
-```
-This will build the app and output the files to the `build` directory.
-## Running the server
-```sh
-npm run server
-```
-This will launch the express server serving content from `build`
-
-## Testing
-Testing is done using karma + mocha with sinon for stubbing ajax requests. We use the [karma-webpack preprocessor](https://github.com/webpack/karma-webpack)
-
-The karma config lives in `karma.conf.js` and is setup to run tests in Chrome and load up `tests.webpack.js`
-
-`tests.webpack.js` loads up all the tests from the `tests` directory and bundles them all up using webpack. We then run them all at once.
-
-To do a test run:
-
-```sh
-npm test
-```
-
-And to run continuous tests which rerun everytime a file changes:
-
-```sh
-npm run testing
+```shell
+.
+├── /build/                     # The folder for compiled output
+├── /node_modules/              # 3rd-party libraries and utilities
+├── /components/                # Shared/generic UI components
+│   ├── /layout/                # Layout component
+│   ├── /button/                # Button component
+│   └── /...                    # etc.
+├── /core/                      # Core framework
+│   ├── /history.js             # Handles client-side navigation
+│   ├── /router.js              # Handles routing and data fetching
+│   └── /store.js               # Application state manager (Redux)
+├── /pages/                     # React components for web pages
+│   ├── /about/                 # About page
+│   ├── /error/                 # Error page
+│   ├── /home/                  # Home page
+│   └── /...                    # etc.
+├── /static/                    # Static files such as favicon.ico etc.
+├── /test/                      # Unit and integration tests
+├── /tools/                     # Build automation scripts and utilities
+│── main.js                     # Bootstrap React application (entry point)
+│── package.json                # The list of project dependencies and NPM scripts
+└── routes.md                   # This list of application routes
 ```
 
 
-## What could be done better
+### Getting Started
 
-* duplicated code in the web pack config files
+Just clone the repo, install Node.js modules and run `npm start`:
 
-There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. I have refactored the obviously common stuff like loaders and the index page generation into `webpack-common.config.js`
+```shell
+$ git clone -o react-static-boilerplate -b master --single-branch \
+      https://github.com/koistya/react-static-boilerplate.git MyApp
+$ cd MyApp
+$ npm install           # Install project dependencies listed in package.json
+$ npm start             # Build and launch the app, same as "node tools/start.js"
+```
 
-* probably a lot of other things - open a pull request!
+**NODE**: Make sure that you have [Node.js](https://nodejs.org/) v6 installed on your local machine.
 
-## Deploy to Heroku
-Try out the code on heroku:
+### How to Test
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+The unit tests are powered by [chai](http://chaijs.com/) and [mocha](http://mochajs.org/).
+
+```shell
+$ npm test
+```
+
+
+### How to Deploy
+
+```shell
+$ npm run deploy                # Deploys the project to GitHub Pages
+```
+
+Alternatively, you can build a production release to manually deploy to S3, Firebase, Netlify, and other static hosts. Simply run the command below and copy the generated `build` folder to your static host.
+
+```shell
+$ npm run build release         # Build production release 
+```
+
+
+### How to Update
+
+You can always fetch and merge the recent changes from this repo back into your own project:
+
+```shell
+$ git checkout master
+$ git fetch react-static-boilerplate
+$ git merge react-static-boilerplate/master
+$ npm install
+```
+
+
+### Backers
+
+Love **React Static Boilerplate** work and community? Help us keep it alive by [donating funds](https://opencollective.com/react-static-boilerplate#support) to cover project expenses!
+
+<a href="https://opencollective.com/react-static-boilerplate/backer/0/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/0/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/1/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/1/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/2/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/2/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/3/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/3/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/4/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/4/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/5/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/5/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/6/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/6/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/7/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/7/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/8/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/8/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/9/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/9/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/10/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/10/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/11/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/11/avatar.svg" height="64">
+</a>
+<a href="https://opencollective.com/react-static-boilerplate/backer/12/website" target="_blank">
+  <img src="https://opencollective.com/react-static-boilerplate/backer/12/avatar.svg" height="64">
+</a>
+
+
+### Related Projects
+
+* [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js, React, GraphQL, Webpack, CSS Modules)
+* [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup, Mocha, Chai, Sinon, Rewire)
+* [React App](https://github.com/kriasoft/react-app) — Bootstrap React app with routing, navigation, context variables and title/meta management
+* [Universal Router](https://github.com/kriasoft/universal-router) — Isomorphic router for web and single-page applications (SPA)
+* [History](https://github.com/mjackson/history) — HTML5 History API wrapper library
+* [Membership Database](https://github.com/membership/membership.db) — SQL schema boilerplate for user accounts, roles and auth tokens
+
+
+### Learn More
+
+* [Getting Started with React.js](http://facebook.github.io/react/)
+* [Getting Started with GraphQL and Relay](https://quip.com/oLxzA1gTsJsE)
+* [React.js Questions on StackOverflow](http://stackoverflow.com/questions/tagged/reactjs)
+* [React.js Discussion Board](https://discuss.reactjs.org/)
+* [Learn ES6](https://babeljs.io/docs/learn-es6/), [ES6 Features](https://github.com/lukehoban/es6features#readme)
+
+
+### License
+
+Copyright © 2015-2016 Konstantin Tarkus. This source code is licensed under the MIT license found in the
+[LICENSE.txt](https://github.com/koistya/react-static-boilerplate/blob/master/LICENSE.txt) file.
+
+---
+Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/koistya/react-static-boilerplate/graphs/contributors)
