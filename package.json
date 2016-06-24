@@ -1,5 +1,5 @@
 {
-  "name": "react-static-site",
+  "name": "mosee",
   "version": "0.1.0",
   "description": "an experiment in generating a static site from react",
   "main": "index.js",
